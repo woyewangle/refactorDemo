@@ -10,6 +10,7 @@ public class CustomerTest {
     @Test
     public void should_return_correct_statement_given_customer_has_no_rental() {
         String statement = customer.statement();
+//        System.out.println(statement);
         assertEquals("Rental Record for Jerry\nAmount owed is 0.0\nYou earned 0 frequent renter points", statement);
     }
 
