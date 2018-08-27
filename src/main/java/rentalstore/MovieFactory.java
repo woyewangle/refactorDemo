@@ -7,5 +7,5 @@ package rentalstore;
  * @Modified By:
  */
 public abstract class MovieFactory {
-    protected abstract double getThisAmount(double thisAmount, Rental each);
+    protected abstract double  getThisAmount(double thisAmount, Rental each);
 }
