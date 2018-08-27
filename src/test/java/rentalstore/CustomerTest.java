@@ -17,9 +17,9 @@ public class CustomerTest {
 
     @Test
     public void should_return_correct_statement_given_customer_has_no_rental() {
-        String statement = customer.statement();
+        String statement = customer.TxtStatement();
         System.out.println(statement);
-        assertEquals("Rental Record for Jerry\nAmount owed is 0.0\nYou earned 0 frequent renter points", statement);
+        assertEquals("Rental Record for Jerry\nAmount owed is0.0\nYou earned0 frequent renter points", statement);
     }
 
     @Test
@@ -28,11 +28,12 @@ public class CustomerTest {
         Rental oneDayRental = new Rental(regularMovie, 1);
         customer.addRental(oneDayRental);
 
-        String statement = customer.statement();
+        String statement = customer.TxtStatement();
+
         assertEquals("Rental Record for Jerry\n" +
                 "\t" + regularMovie.getTitle() + "\t2.0\n" +
-                "Amount owed is 2.0\n" +
-                "You earned 1 frequent renter points", statement);
+                "Amount owed is2.0\n" +
+                "You earned1 frequent renter points", statement);
     }
 
     @Test
@@ -41,7 +42,7 @@ public class CustomerTest {
         Rental oneDayRental = new Rental(regularMovie, 3);
         customer.addRental(oneDayRental);
 
-        String statement = customer.statement();
+        String statement = customer.TxtStatement();
         assertEquals("Rental Record for Jerry\n" +
                 "\t" + regularMovie.getTitle() + "\t3.5\n" +
                 "Amount owed is 3.5\n" +
@@ -53,7 +54,7 @@ public class CustomerTest {
         Movie movie =new Movie("movie1Title",Movie.NEW_RELEASE);
         Rental rental = new Rental(movie,1);
         customer.addRental(rental);
-        String result = customer.statement();
+        String result = customer.TxtStatement();
         assertThat(result,is("Rental Record for Jerry\n" +
                 "\tmovie1Title\t3.0\n" +
                 "Amount owed is 3.0\n" +
@@ -66,7 +67,7 @@ public class CustomerTest {
         Movie movie =new Movie("movie1Title",Movie.NEW_RELEASE);
         Rental rental = new Rental(movie,4);
         customer.addRental(rental);
-        String result = customer.statement();
+        String result = customer.TxtStatement();
         assertThat(result,is("Rental Record for Jerry\n" +
                 "\tmovie1Title\t12.0\n" +
                 "Amount owed is12.0\n" +
@@ -79,6 +80,7 @@ public class CustomerTest {
         Rental rental=new Rental(movie,1);
         customer.addRental(rental);
         String result=  customer.htmlStatement();
+
         assertEquals("<H1>Rentals for <EM>Jerry</EM></H1><P>\n" +
                 "\tRoman Holiday\t3.0<BR>\n" +
                 "<P>You owe<EM>3.0</EM><P>\n" +
