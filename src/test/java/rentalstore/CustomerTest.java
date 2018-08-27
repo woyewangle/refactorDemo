@@ -69,8 +69,8 @@ public class CustomerTest {
         String result = customer.statement();
         assertThat(result,is("Rental Record for Jerry\n" +
                 "\tmovie1Title\t12.0\n" +
-                "Amount owed is 12.0\n" +
-                "You earned 2 frequent renter points"));
+                "Amount owed is12.0\n" +
+                "You earned2 frequent renter points"));
     }
 
     @Test
