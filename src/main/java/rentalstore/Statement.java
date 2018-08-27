@@ -23,20 +23,7 @@ public abstract class Statement {
     protected abstract String getFooterString();
 
     protected double getThisAmount(double thisAmount, Rental each) {
-        switch (each.getMovie().getPriceCode()){
-            case Movie.REGULAR:
-                RegularMovie regularMovie = new RegularMovie();
-                thisAmount = regularMovie.getThisAmount(thisAmount,each);
-                break;
-            case Movie.NEW_RELEASE:
-                NewReleaseMovie newReleaseMovie = new NewReleaseMovie();
-                thisAmount = newReleaseMovie.getThisAmount(thisAmount,each);
-                break;
-            case Movie.CHILDRENS:
-                ChildrenMovie childrenMovie = new ChildrenMovie();
-                thisAmount = childrenMovie.getThisAmount(thisAmount,each);
-                break;
-        }
+        thisAmount = each.getMovie().getMovieFactory().getThisAmount(thisAmount,each);
         //add frequent renter points
         frequentRenterPoints ++;
         //add bonus for a two day new release rental
