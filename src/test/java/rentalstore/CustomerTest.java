@@ -57,8 +57,8 @@ public class CustomerTest {
         String result = customer.TxtStatement();
         assertThat(result,is("Rental Record for Jerry\n" +
                 "\tmovie1Title\t3.0\n" +
-                "Amount owed is 3.0\n" +
-                "You earned 1 frequent renter points"));
+                "Amount owed is3.0\n" +
+                "You earned1 frequent renter points"));
     }
 
 
