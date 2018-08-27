@@ -61,6 +61,31 @@ public class CustomerTest {
     }
 
 
+    @Test
+    public void should_return_correct_statement_given_customer_new_release_movie_has_rent_one_rental_and_day_rented_4() {
+        Movie movie =new Movie("movie1Title",Movie.NEW_RELEASE);
+        Rental rental = new Rental(movie,4);
+        customer.addRental(rental);
+        String result = customer.statement();
+        assertThat(result,is("Rental Record for Jerry\n" +
+                "\tmovie1Title\t12.0\n" +
+                "Amount owed is 12.0\n" +
+                "You earned 2 frequent renter points"));
+    }
+
+    @Test
+    public void should_return_html_statement() {
+        Movie movie =new Movie("Roman Holiday",Movie.NEW_RELEASE);
+        Rental rental=new Rental(movie,1);
+        customer.addRental(rental);
+        String result=  customer.htmlStatement();
+        assertEquals("<H1>Rentals for <EM>Jerry</EM></H1><P>\n" +
+                "\tRoman Holiday\t3.0<BR>\n" +
+                "<P>You owe<EM>3.0</EM><P>\n" +
+                "On this rental you earned <EM>1</EM> frequent renter points<P>",result);
+    }
+
+
 
 
 
